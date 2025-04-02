@@ -8,8 +8,8 @@ const PORT = process.env.PORT || 80;
 const app = express();
 
 // Ваш API-ключ и ID поисковой системы (CX)
-const API_KEY = 'AIzaSyADWz4O7l1Q904RKKeaXNuQ0dVbh3we_qA';
-const SEARCH_ENGINE_ID = '01d459bdc0f9548c8';
+const API_KEY = process.env.API;
+const SEARCH_ENGINE_ID = process.env.SEARCH_ENGINE_ID;
 
 // Настройка шаблонов для ejs
 app.set('view engine', 'ejs');
