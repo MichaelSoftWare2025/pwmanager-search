@@ -13,7 +13,7 @@
     <ul class="results">
         {% for item in results %}
             <li class="item">
-                <a href="{{ item.link }}" target="_blank">{{ item.title }}</a>
+                <a href="{{ item.link }}">{{ item.title }}</a>
                 <p>{{ item.snippet }}</p>
                 {% if item.pagemap and item.pagemap.cse_image %}
                     <img src="{{ item.pagemap.cse_image[0].src }}" alt="Произошла ошибка" width="100">
