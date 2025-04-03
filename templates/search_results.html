@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Search results for: "{{ query }}"</h1>
+    
+    <!-- Display the search results -->
+    <ul class="results">
+        {% for item in results %}
+            <li class="item">
+                <a href="{{ item.link }}" target="_blank">{{ item.title }}</a>
+                <p>{{ item.snippet }}</p>
+                {% if item.pagemap and item.pagemap.cse_image %}
+                    <img src="{{ item.pagemap.cse_image[0].src }}" alt="Произошла ошибка" width="100">
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+    
+    <!-- Pagination links -->
+    <div class="pagination">
+        {% if page > 1 %}
+            <a href="/search?query={{ query|urlencode }}&page={{ page - 1 }}">Previous</a>
+        {% endif %}
+        <a href="/search?query={{ query|urlencode }}&page={{ page + 1 }}">Next</a>
+    </div>
+    
+    <a href="/">Back to search</a>
+</body>
+</html>
